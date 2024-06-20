@@ -10,7 +10,16 @@ class Job implements Serializable {
     private final int jobHours;
     private final int jobPenalty;
 
-    public Job(int jobNum, String jobType, int expRequired, int jobHours, int jobPenalty){
+    /**
+     * Constructs a new Job with the specified details.
+     *
+     * @param jobNum      the job number, which uniquely identifies the job
+     * @param jobType     the type of job (e.g., Design, Hardware, Software)
+     * @param expRequired the amount of experience required for the job, in years
+     * @param jobHours    the number of hours required to complete the job
+     * @param jobPenalty  the penalty incurred if the job is not completed on time
+     */
+    public Job(int jobNum, String jobType, int expRequired, int jobHours, int jobPenalty) {
 
         this.jobNum = jobNum;
         this.jobType = jobType;
@@ -38,6 +47,7 @@ class Job implements Serializable {
     public String getJobType() {
         return jobType;
     }
+
     public int getExpRequired() {
         return expRequired;
     }

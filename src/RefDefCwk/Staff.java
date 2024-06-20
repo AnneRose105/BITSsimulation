@@ -3,6 +3,7 @@ package RefDefCwk;
 
 import java.io.Serializable;
 
+
 class Staff implements Serializable {
 
 
@@ -15,6 +16,18 @@ class Staff implements Serializable {
     private String role;
     private StaffState staffState;
 
+    /**
+     * Constructs a new Staff member with the specified details.
+     *
+     * @param name       the name of the staff member
+     * @param experience the number of years of experience the staff member has
+     * @param retainer   the retainer fee for the staff member
+     * @param cisco      whether member has Cisco certification or not
+     * @param programs   whether the staff can program or not
+     * @param hourlyRate the hourly rate of the staff member
+     * @param role       the role of the staff member
+     * @param staffState the current state of the staff member (e.g., AVAILABLE, WORKING, ON HOLIDAY)
+     */
     public Staff(String name,
                  int experience,
                  double retainer,

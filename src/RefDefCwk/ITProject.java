@@ -138,7 +138,7 @@ public class ITProject implements BITS, Serializable {
     /**
      * Returns a String with information about specified job
      *
-     * @param no - number of the specified job
+     * @param no number of the specified job
      * @return returns a String representation of all jobs
      **/
     public String getJob(int no) {
@@ -238,6 +238,14 @@ public class ITProject implements BITS, Serializable {
         return result + "\nAccount = £ " + account + "\n";
     }
 
+    /**
+     * Returns a Staff object given a name of the
+     * staff in lower or upper case
+     *
+     * @param name Name of the staff whose details needs
+     * to be retrieved
+     * @return a Staff object
+     */
     public Staff getStaffData(String name) {
         Staff st = new Staff();
         for (Staff staff : staffs) {
@@ -349,6 +357,7 @@ public class ITProject implements BITS, Serializable {
      * Staff rejoin the team after holiday by setting state to "working"
      *
      * @param the name of the staff rejoining the team after holiday
+     * @return the outcome of the staff rejoin process
      */
     public String staffRejoinTeam(String name) {
 
@@ -394,6 +403,12 @@ public class ITProject implements BITS, Serializable {
 
 // May be helpful    
 
+    /**
+     * Returns a Job give a job number
+     *
+     * @param num number of job to be retrieved
+     * @return Job object corresponding to job number
+     */
     private Job getAJob(int num) {
         Job jb = null;
         int nu;
@@ -405,6 +420,12 @@ public class ITProject implements BITS, Serializable {
         return jb;
     }
 
+    /**
+     * Returns the details of a matching staff given a job
+     *
+     * @param jbb job to be performed
+     * @return Details of the first found staff that could do the job
+     */
     private Staff getStaffForJob(Job jbb) {
         boolean staffFound = false;
         for (Staff staff : staffsInTeam) {
