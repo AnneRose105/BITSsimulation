@@ -190,7 +190,7 @@ public class ManagementGeneral {
     }
 
 
-    /*** My Tests ***/
+    /*** My Tests ****/
 
     //************* Project status ************
 

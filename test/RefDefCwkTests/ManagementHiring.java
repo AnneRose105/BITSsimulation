@@ -82,7 +82,7 @@ public class ManagementHiring
     }
 
 
-    /********* Mytests **************/
+    /********* Mytests *************/
 
     @Test
     public void hireStaffWithWrongSpelling(){
