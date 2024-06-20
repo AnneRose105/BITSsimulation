@@ -8,8 +8,8 @@ import java.io.*;
  * as required for 5COM2007 Referred/Deferred Cwk - June 2024 and
  * specified in the BITS interface
  *
- * @author - add name and SRN
- * @author - if working as a pair, add your partner's name & SRN here
+ * @author - Anne Rose (SRN : 21078366)
+ * @author -
  * (or leave blank, if working individually)
  * @author A.A.Marczyk
  * @version 24/04/2024
