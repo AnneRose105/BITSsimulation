@@ -3,8 +3,8 @@ package RefDefCwk;
 import java.util.*;
 import java.io.*;
 
-import static RefDefCwk.JobType.*;
-import static RefDefCwk.JobType.HARDWARE;
+//import RefDefCwk.JobType.*;
+//import static RefDefCwk.JobType.HARDWARE;
 
 /**
  * This class implements the behaviour expected from the BITS system
@@ -50,7 +50,7 @@ public class ITProject implements BITS, Serializable {
      *
      * @param manager  the name of the trainee manager running the simulation
      * @param budget   the initial budget allocated to the project account
-     * @param filename the name of the jobs file
+     * @param jobfile the name of the jobs file
      */
     public ITProject(String manager, double budget, String jobfile) {
         name = manager;
@@ -323,8 +323,6 @@ public class ITProject implements BITS, Serializable {
         Job job = null;
         if (!getJob(jbNo).equals("No such Job")) {
             job = getAJob(jbNo);
-            int inexperienceCounter = 0;
-            int unavailabilityCounter = 0;
             Staff staff = getStaffForJob(job);
             if (staff != null) {
                 boolean inExperienced = staff.getExperience() < job.getExpRequired();
@@ -393,13 +391,13 @@ public class ITProject implements BITS, Serializable {
 
     private void setupJobs() {
 
-        jobs.add(new Job(100, DESIGN, 3, 10, 200));
-        jobs.add(new Job(101, HARDWARE, 3, 20, 150));
-        jobs.add(new Job(102, SOFTWARE, 3, 30, 100));
-        jobs.add(new Job(103, DESIGN, 9, 25, 250));
-        jobs.add(new Job(104, SOFTWARE, 7, 15, 350));
-        jobs.add(new Job(105, HARDWARE, 8, 35, 300));
-        jobs.add(new Job(106, HARDWARE, 5, 20, 400));
+        jobs.add(new Job(100, JobType.DESIGN, 3, 10, 200));
+        jobs.add(new Job(101, JobType.HARDWARE, 3, 20, 150));
+        jobs.add(new Job(102, JobType.SOFTWARE, 3, 30, 100));
+        jobs.add(new Job(103, JobType.DESIGN, 9, 25, 250));
+        jobs.add(new Job(104, JobType.SOFTWARE, 7, 15, 350));
+        jobs.add(new Job(105, JobType.HARDWARE, 8, 35, 300));
+        jobs.add(new Job(106, JobType.HARDWARE, 5, 20, 400));
     }
 
 // May be helpful    
