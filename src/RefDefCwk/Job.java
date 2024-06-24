@@ -61,4 +61,15 @@ class Job implements Serializable {
         return jobPenalty;
     }
 
+    public static JobType getJobTypeFromString(String type){
+        if (type.equalsIgnoreCase("Design")){
+            return JobType.DESIGN;
+        }else if(type.equalsIgnoreCase("Hardware")){
+            return JobType.HARDWARE;
+        }
+        else {
+            return JobType.SOFTWARE;
+        }
+    }
+
 }

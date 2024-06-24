@@ -3,7 +3,8 @@ package RefDefCwk;
 import java.util.*;
 import java.io.*;
 
-import static RefDefCwk.JobType.SOFTWARE;
+import static RefDefCwk.JobType.*;
+import static RefDefCwk.JobType.HARDWARE;
 
 /**
  * This class implements the behaviour expected from the BITS system
@@ -392,13 +393,13 @@ public class ITProject implements BITS, Serializable {
 
     private void setupJobs() {
 
-        jobs.add(new Job(100, "Design", 3, 10, 200));
-        jobs.add(new Job(101, "Hardware", 3, 20, 150));
-        jobs.add(new Job(102, "Software", 3, 30, 100));
-        jobs.add(new Job(103, "Design", 9, 25, 250));
-        jobs.add(new Job(104, "Software", 7, 15, 350));
-        jobs.add(new Job(105, "Hardware", 8, 35, 300));
-        jobs.add(new Job(106, "Hardware", 5, 20, 400));
+        jobs.add(new Job(100, DESIGN, 3, 10, 200));
+        jobs.add(new Job(101, HARDWARE, 3, 20, 150));
+        jobs.add(new Job(102, SOFTWARE, 3, 30, 100));
+        jobs.add(new Job(103, DESIGN, 9, 25, 250));
+        jobs.add(new Job(104, SOFTWARE, 7, 15, 350));
+        jobs.add(new Job(105, HARDWARE, 8, 35, 300));
+        jobs.add(new Job(106, HARDWARE, 5, 20, 400));
     }
 
 // May be helpful    
@@ -545,7 +546,7 @@ public class ITProject implements BITS, Serializable {
                 int jobHours = Integer.parseInt(jobFields[3]);
                 int jobPenalty = Integer.parseInt(jobFields[4]);
 
-                Job job = new Job(jobNum, jobType, expRequired, jobHours, jobPenalty);
+                Job job = new Job(jobNum, Job.getJobTypeFromString(jobType), expRequired, jobHours, jobPenalty);
                 jbs.add(job);
             }
             jobs = jbs;
