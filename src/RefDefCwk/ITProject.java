@@ -3,6 +3,8 @@ package RefDefCwk;
 import java.util.*;
 import java.io.*;
 
+import static RefDefCwk.JobType.SOFTWARE;
+
 /**
  * This class implements the behaviour expected from the BITS system
  * as required for 5COM2007 Referred/Deferred Cwk - June 2024 and
@@ -239,11 +241,10 @@ public class ITProject implements BITS, Serializable {
     }
 
     /**
-     * Returns a Staff object given a name of the
-     * staff in lower or upper case
+     * Get Staff by name
      *
      * @param name Name of the staff whose details needs
-     * to be retrieved
+     *             to be retrieved
      * @return a Staff object
      */
     public Staff getStaffData(String name) {
@@ -354,9 +355,9 @@ public class ITProject implements BITS, Serializable {
     }
 
     /**
-     * Staff rejoin the team after holiday by setting state to "working"
+     * Staff return from holiday by setting state to "working"
      *
-     * @param the name of the staff rejoining the team after holiday
+     * @param name of staff that begins to rejoin team after holiday.
      * @return the outcome of the staff rejoin process
      */
     public String staffRejoinTeam(String name) {
@@ -366,8 +367,7 @@ public class ITProject implements BITS, Serializable {
                 if (staff.getStaffState().equals(StaffState.ONHOLIDAY)) {
                     staff.setStaffState(StaffState.WORKING);
                     return name + " rejoined the team after holiday";
-                }
-                else{
+                } else {
                     return name + " is already available on team and is not on holiday";
                 }
 
@@ -404,7 +404,7 @@ public class ITProject implements BITS, Serializable {
 // May be helpful    
 
     /**
-     * Returns a Job give a job number
+     * Returns a Job given a job number
      *
      * @param num number of job to be retrieved
      * @return Job object corresponding to job number
@@ -421,8 +421,10 @@ public class ITProject implements BITS, Serializable {
     }
 
     /**
-     * Returns the details of a matching staff given a job
-     *
+     * It returns a staff member within the team who could be suitable to work on the given job.
+     * This method goes through all the staff members in the team and checks whether they are
+     * currently working, and if so, whether they have the appropriate skills to work on the job. A
+     * staff member suitability is determined by his/her role and type of job.
      * @param jbb job to be performed
      * @return Details of the first found staff that could do the job
      */
@@ -431,7 +433,7 @@ public class ITProject implements BITS, Serializable {
         for (Staff staff : staffsInTeam) {
             if (staff.getStaffState().equals(StaffState.WORKING)) {
                 switch (jbb.getJobType()) {
-                    case "Software":
+                    case SOFTWARE:
                         if (staff.getRole().equals("Engineer")) {
                             staffFound = false;
                         } else if (staff.getRole().equals("Programmer")) {
@@ -445,7 +447,7 @@ public class ITProject implements BITS, Serializable {
                         }
                         break;
 
-                    case "Hardware":
+                    case HARDWARE:
                         if (staff.getRole().equals("Engineer")) {
                             staffFound = true;
                         } else if (staff.getRole().equals("Programmer")) {
@@ -455,7 +457,7 @@ public class ITProject implements BITS, Serializable {
                         }
                         break;
 
-                    case "Design":
+                    case DESIGN:
                         if (staff.getRole().equals("Engineer")) {
                             staffFound = false;
                         } else if (staff.getRole().equals("Programmer")) {
@@ -508,7 +510,7 @@ public class ITProject implements BITS, Serializable {
     /**
      * Reads ITProject from specified file using serialization and restores it
      *
-     * @param fname name of file from which schedule is read
+     * @param filename name of file from which schedule is read
      */
     public ITProject restoreITProject(String filename) {   // uses object serialisation
         ITProject yyy = null;
@@ -534,7 +536,7 @@ public class ITProject implements BITS, Serializable {
         List<Job> jbs = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fname));
-            String line ;
+            String line;
             while ((line = reader.readLine()) != null) {
                 String[] jobFields = line.split(",");
                 int jobNum = Integer.parseInt(jobFields[0]);

@@ -1,17 +1,18 @@
 package RefDefCwk;
 
 import java.io.Serializable;
+import java.util.Map;
 
 class Job implements Serializable {
 
     private final int jobNum;
-    private final String jobType;
+    private final JobType jobType;
     private final int expRequired;
     private final int jobHours;
     private final int jobPenalty;
 
     /**
-     * Constructs a new Job with the specified details.
+     * Creates a new Job object with the specified attributes.
      *
      * @param jobNum      the job number, which uniquely identifies the job
      * @param jobType     the type of job (e.g., Design, Hardware, Software)
@@ -19,7 +20,7 @@ class Job implements Serializable {
      * @param jobHours    the number of hours required to complete the job
      * @param jobPenalty  the penalty incurred if the job is not completed on time
      */
-    public Job(int jobNum, String jobType, int expRequired, int jobHours, int jobPenalty) {
+    public Job(int jobNum, JobType jobType, int expRequired, int jobHours, int jobPenalty) {
 
         this.jobNum = jobNum;
         this.jobType = jobType;
@@ -44,7 +45,7 @@ class Job implements Serializable {
         return jobNum;
     }
 
-    public String getJobType() {
+    public JobType getJobType() {
         return jobType;
     }
 
